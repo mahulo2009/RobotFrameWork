@@ -6,11 +6,14 @@ RobotFactory::RobotFactory()
 
 RobotBase * RobotFactory::assembly()
 {
+   
     RobotBase * robot = buildRobot();
-
+    
     WheelBase * wheel_left = buildWheel(0);
-    robot->attachLeftWheel(wheel_left);       
+    robot->addWheel(wheel_left);       
 
     WheelBase * wheel_right = buildWheel(1);
-    robot->attachRightWheel(wheel_right); 
+    robot->addWheel(wheel_right); 
+
+    return robot;
 }

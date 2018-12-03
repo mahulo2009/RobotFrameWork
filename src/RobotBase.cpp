@@ -6,12 +6,8 @@ RobotBase::RobotBase() 	:   x_(0),y_(0),theta_(0),
 {
 }
 
-void RobotBase::attachLeftWheel(WheelBase * wheelLeft)
+void RobotBase::addWheel(WheelBase * wheel)
 {
-	this->wheelLeft_= wheelLeft;
+	this->wheels_.push_back(wheel);
 }
 
-void RobotBase::attachRightWheel(WheelBase * wheelRight)
-{
-    this->wheelRight_= wheelRight;
-}

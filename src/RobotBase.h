@@ -2,6 +2,7 @@
 #define Robot_Base_H
 
 #include <WheelBase.h>
+#include <vector>
 
 class RobotBase {
 
@@ -13,9 +14,8 @@ class RobotBase {
         virtual void stop() = 0;
         virtual void update(float dt) = 0;
 
-		void attachLeftWheel(WheelBase * wheelLeft);	//TODO CHANGE FOR ADD; TO MAKE MORE GENERIC ROBOT WITH 4 WHEELS FOR INSTANCE
-		void attachRightWheel(WheelBase * wheelRight);
-
+		void addWheel(WheelBase * wheel);	
+		
         float getX() {return x_;};		
 		float getY() {return y_;};
 		float getTheta() {return theta_;};				
@@ -32,9 +32,7 @@ class RobotBase {
 		float vy_;
   		float vtheta_;
 
-		WheelBase * wheelLeft_;
-		WheelBase * wheelRight_;
-
+		std::vector<WheelBase * > wheels_;
 
   	private:
 

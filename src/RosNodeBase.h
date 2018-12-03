@@ -11,6 +11,6 @@ class RosNodeBase {
             RosNodeBase();
 
             virtual void init(ros::NodeHandle &nh) = 0;                       
-            virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster) = 0;  ////TO DEFINE A CONTEXT.
+            virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster) = 0;
 };
 #endif

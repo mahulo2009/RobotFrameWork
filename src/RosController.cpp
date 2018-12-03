@@ -5,11 +5,13 @@ RosController::RosController()
     init_();
 }
 
+
 RosController::RosController(IPAddress * server, uint16_t server_port)
 {
     nh.getHardware()->setConnection(*server, server_port);
     init_();
 }
+
 
 void RosController::init_()
 {      
@@ -39,8 +41,10 @@ void RosController::readConfiguration(RosConfigBase * ros_config)
 
 void RosController::update()
 {
-    if (nh.connected()) {
+    while(!nh.connected()) {nh.spinOnce();}
 
+    if (nh.connected()) {
+        
         current_time_ = nh.now();
         double dt = current_time_.toSec() - last_time_.toSec();   
 
@@ -53,6 +57,6 @@ void RosController::update()
         
         nh.spinOnce(); 
         //Delay
-        delay(100);  //TODO REDUCE THIS
+        delay(100);  
     }    
 }

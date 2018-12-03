@@ -12,7 +12,7 @@ class RobotFactory {
 
         RobotFactory();
 
-        virtual RobotBase * assembly();
+        RobotBase * assembly();
 
         virtual RobotBase * buildRobot() = 0;
 

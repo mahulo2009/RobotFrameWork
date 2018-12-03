@@ -1,6 +1,7 @@
 #ifndef Ros_Controller_H
 #define Ros_Controller_H
 
+
 #include <RosNodeBase.h>
 #include <ros.h>
 #include <tf/tf.h>
@@ -10,6 +11,7 @@
 #include <sensor_msgs/Range.h>
 #include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
+#include <vector>
 
 #include <RosConfigBase.h>
 
@@ -23,7 +25,7 @@ class RosController {
 
             RosController();
 
-            RosController(IPAddress * server, uint16_t server_port);
+            RosController(IPAddress * server, uint16_t server_port); //TODO RECOVER THIS
 
             void init();
             void readConfiguration(RosConfigBase * ros_config);
