@@ -5,13 +5,14 @@ RosController::RosController()
     init_();
 }
 
+/*
 
 RosController::RosController(IPAddress * server, uint16_t server_port)
 {
     nh.getHardware()->setConnection(*server, server_port);
     init_();
 }
-
+*/
 
 void RosController::init_()
 {      

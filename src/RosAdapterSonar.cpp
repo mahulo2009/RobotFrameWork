@@ -2,8 +2,8 @@
 
 RosAdapterSonar::RosAdapterSonar() : 
     sonar_pose_sub_("/car/sonar_pose", &RosAdapterSonar::sonar_pose_callback ,this),
-    ultrasonic_pub_("/car/ultrasound", &ultrasonic_msg_),
-    sonar_(0)
+    ultrasonic_pub_("/car/ultrasound", &ultrasonic_msg_)
+    //,sonar_(0)
 {
 }
 
@@ -21,13 +21,16 @@ void RosAdapterSonar::init(ros::NodeHandle &nh)
 
 void RosAdapterSonar::sonar_pose_callback( const geometry_msgs::Pose2D & sonar_pose) 
 {
+    /*
     if (sonar_ != 0 ) { 
         sonar_->moveTo(sonar_pose.theta);
     }
+    */
 }
    
 void RosAdapterSonar::update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster)
 {   
+    /*
     if (sonar_ != 0 )  
     {
     
@@ -45,4 +48,5 @@ void RosAdapterSonar::update(ros::Time &current_time,tf::TransformBroadcaster &b
         ultrasonic_pub_.publish(&ultrasonic_msg_);    
 
     }
+    */
 }

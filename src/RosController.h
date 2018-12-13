@@ -25,7 +25,7 @@ class RosController {
 
             RosController();
 
-            RosController(IPAddress * server, uint16_t server_port); //TODO RECOVER THIS
+            //RosController(IPAddress * server, uint16_t server_port); //TODO RECOVER THIS
 
             void init();
             void readConfiguration(RosConfigBase * ros_config);

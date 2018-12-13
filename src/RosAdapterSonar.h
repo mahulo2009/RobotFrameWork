@@ -8,7 +8,7 @@
 #include <geometry_msgs/Pose2D.h>
 
 #include <RosNodeBase.h>
-#include <Sonar.h>
+//#include <Sonar.h> //TODO CHANGE FOR SONARBASE
 
 //TODO MOVE TO FRAMEWORK
 
@@ -23,11 +23,11 @@ class RosAdapterSonar : public RosNodeBase {
             
             
             void sonar_pose_callback( const geometry_msgs::Pose2D & sonar_pose);
-
+/*
             void attachSonar(Sonar * sonar) {
                 this->sonar_=sonar;
             }
-                    
+*/                    
 	protected:
 
   	private:
@@ -37,6 +37,6 @@ class RosAdapterSonar : public RosNodeBase {
             ros::Publisher ultrasonic_pub_;
             sensor_msgs::Range ultrasonic_msg_;            
 
-            Sonar * sonar_;
+            //Sonar * sonar_;
 };
 #endif
