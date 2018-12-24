@@ -15,7 +15,7 @@
 
 #include <RosConfigBase.h>
 
-#define ROS_CONTROLLER_DEBUG 1
+//#define ROS_CONTROLLER_DEBUG 1
 
 typedef  RosNodeBase * RosNodeBasePtr;
 

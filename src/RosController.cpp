@@ -6,7 +6,6 @@ RosController::RosController()
 }
 
 /*
-
 RosController::RosController(IPAddress * server, uint16_t server_port)
 {
     nh.getHardware()->setConnection(*server, server_port);
@@ -15,7 +14,8 @@ RosController::RosController(IPAddress * server, uint16_t server_port)
 */
 
 void RosController::init_()
-{      
+{    
+    nh.getHardware()->setBaud(115200);
     nh.initNode();
     broadcaster.init(nh);
 
@@ -57,7 +57,5 @@ void RosController::update()
         last_time_ = current_time_;
         
         nh.spinOnce(); 
-        //Delay
-        delay(100);  
     }    
 }

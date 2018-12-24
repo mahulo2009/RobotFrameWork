@@ -8,11 +8,14 @@ DifferentialWheeledRobot::DifferentialWheeledRobot(float wheel_separation, float
 
 void DifferentialWheeledRobot::move(float velocity_x, float velocity_theta)
 {
-  double velocity_1  = ( velocity_x + velocity_theta * wheel_separation_) / ( wheel_radious_ ) ;
-  double velocity_2  = ( velocity_x - velocity_theta * wheel_separation_) / ( wheel_radious_ ) ;
+  double velocity_1  = ( 2 * velocity_x + velocity_theta * wheel_separation_) / ( 2 * wheel_radious_ );
+  double velocity_2  = ( 2 * velocity_x - velocity_theta * wheel_separation_) / ( 2 * wheel_radious_ );
 
   wheels_[0]->move(velocity_1);
+  wheels_[0]->update(); //TODO
+
   wheels_[1]->move(velocity_2);
+  wheels_[1]->update(); //TODO
 
 
 	#ifdef DIFFERENTIAL_WHEELED_ROBOT_DEBUG
@@ -35,8 +38,9 @@ void DifferentialWheeledRobot::stop()
 
 void DifferentialWheeledRobot::update(float dt)
 {
-	double velocity_1  = wheels_[0]->getVelocity();
-  double velocity_2  = wheels_[1]->getVelocity();
+
+  float velocity_1 =  wheels_[0]->getVelocity();
+  float velocity_2 =  wheels_[1]->getVelocity();
 
 	#ifdef DIFFERENTIAL_WHEELED_ROBOT_DEBUG
 	Serial.print("DifferentialWheeledRobot::update:");
@@ -47,8 +51,8 @@ void DifferentialWheeledRobot::update(float dt)
   Serial.print("\n");
 	#endif
 
-	vx_ = ( wheel_radious_ * ( velocity_1 + velocity_2 ) ) / 2.;
-	vy_ = 0;
+  vx_     = ( wheel_radious_ * ( velocity_1 + velocity_2 ) ) / 2.;
+	vy_     = 0;
   vtheta_ = ( ( wheel_radious_ * ( velocity_1 - velocity_2 ) ) /  ( wheel_separation_ ) ) ;
 
 	#ifdef DIFFERENTIAL_WHEELED_ROBOT_DEBUG
@@ -59,10 +63,9 @@ void DifferentialWheeledRobot::update(float dt)
   Serial.print(vtheta_);
   Serial.print("\n");
 	#endif
-
-	x_ +=  vx_ * cos(theta_) * dt;
-	y_ +=  vx_ * sin(theta_) * dt;
-  theta_+= vtheta_ * dt;
+  x_      += vx_ * cos(theta_) * dt;
+	y_      += vx_ * sin(theta_) * dt;
+  theta_  += vtheta_ * dt;
 
 	#ifdef DIFFERENTIAL_WHEELED_ROBOT_DEBUG
 	Serial.print("DifferentialWheeledRobot::update:");

@@ -21,6 +21,20 @@ class WheelBase {
             {return currentVelocity_;};
         inline float getDemandedVelocity() 
             {return demandedVelocity_;};
+
+        inline float getDistance() 
+            {return distance_;};
+
+        inline void setDistance(float distance) 
+            {this->distance_=distance;};
+
+        HardwareController * getHardwareController() {
+            return controller_;
+        }
+        
+        virtual void update() = 0;
+
+        float distance_;
         
     protected:
 
