@@ -22,7 +22,7 @@ class RosAdapterRobot  : public RosNodeBase {
             virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster);
             
             void cmd_velocity_callback(const geometry_msgs::Twist& CVel);
-            void attachRobot(RobotBase * robot); //TODO MOVE TO SUPER CLASS
+            void attachRobot(RobotBase * robot);
             
                     
 	protected:
