@@ -1,0 +1,4 @@
+- Find out from where to call the update method of the wheel.
+- Robot base check the index of the getWheel method, out of index.
+- RosAdapterSonar to work with interface rather than concrete class.
+- RosController to work with serial or internet protocol.
