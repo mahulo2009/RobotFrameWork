@@ -8,15 +8,23 @@ RosController::RosController()
 
 RosController::RosController(IPAddress * server, uint16_t server_port)
 {
+    #if defined(ESP8266)
     nh.getHardware()->setConnection(*server, server_port);
+    #endif
+
     init_();
 }
 
-
 void RosController::init_()
-{      
+{    
+    #if not defined(ESP8266)
+    nh.getHardware()->setBaud(115200);
+    #endif
+
     nh.initNode();
     broadcaster.init(nh);
+
+    while(!nh.connected()) {nh.spinOnce();}
 
     current_time_ = last_time_ = nh.now();   
 }

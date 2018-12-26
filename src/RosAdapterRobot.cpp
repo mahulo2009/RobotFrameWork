@@ -27,7 +27,7 @@ void RosAdapterRobot::attachRobot(RobotBase * robot)
 }
 
 void RosAdapterRobot::update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster)
-{  
+{
     if ( robot_ != 0 ) 
     {
         //BEGIN TF
@@ -51,9 +51,9 @@ void RosAdapterRobot::update(ros::Time &current_time,tf::TransformBroadcaster &b
         odom_nav_msg_.pose.pose.orientation = tf::createQuaternionFromYaw(robot_->getTheta());
         //set the velocity
         odom_nav_msg_.child_frame_id = "/base_link";
-        odom_nav_msg_.twist.twist.linear.x = 0.0; //robot_->getVx();
-        odom_nav_msg_.twist.twist.linear.y = 0.0; //robot_->getVy();
-        odom_nav_msg_.twist.twist.angular.z = 0.0; //robot_->getVtheta();
+        odom_nav_msg_.twist.twist.linear.x = robot_->getVx();
+        odom_nav_msg_.twist.twist.linear.y = robot_->getVy();
+        odom_nav_msg_.twist.twist.angular.z = robot_->getVtheta();
         odom_pub_.publish(&odom_nav_msg_);
         //END ODOMETRY
     }

@@ -30,19 +30,17 @@ void RosAdapterSonar::update(ros::Time &current_time,tf::TransformBroadcaster &b
 {   
     if (sonar_ != 0 )  
     {
-    
-        ultrasonic_trans_.header.frame_id = "/base_link";
+        ultrasonic_trans_.header.frame_id = "/base_link";   //TODO MOVE THIS TO CONFIGURATION
         ultrasonic_trans_.child_frame_id = "/ultrasound";
         ultrasonic_trans_.transform.translation.x = 0.045; 
         ultrasonic_trans_.transform.translation.y = 0.0; 
         ultrasonic_trans_.transform.translation.z = 0.075;
-        ultrasonic_trans_.transform.rotation = tf::createQuaternionFromYaw(sonar_->getAngle()); //TODO INCLUDE ORIENTATION + RELATIVE POSITION SENSOR.
+        ultrasonic_trans_.transform.rotation = tf::createQuaternionFromYaw(sonar_->getAngle());
         ultrasonic_trans_.header.stamp = current_time;
         broadcaster.sendTransform(ultrasonic_trans_);
 
         ultrasonic_msg_.range = sonar_->read()/100.0; //TODO IMPROVE THIS UNITS
         ultrasonic_msg_.header.stamp = current_time;
-        ultrasonic_pub_.publish(&ultrasonic_msg_);    
-
+        ultrasonic_pub_.publish(&ultrasonic_msg_);
     }
 }

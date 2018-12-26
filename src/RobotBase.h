@@ -22,6 +22,11 @@ class RobotBase {
 		float getVx() {return vx_;};
 		float getVy() {return vy_;};
 		float getVtheta() {return vtheta_;};
+
+		WheelBase * getWheel(int index) 
+		{
+			return wheels_[index]; //TODO CHECK THE INDEx
+		}
       
 	protected:
 

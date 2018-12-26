@@ -1,6 +1,14 @@
 #ifndef Ros_Controller_H
 #define Ros_Controller_H
 
+#if defined(ESP8266)
+  #include <ESP8266WiFi.h>
+#elif defined(ESP32)
+  #include <WiFi.h> // Using Espressif's WiFi.h
+#else
+  #include <SPI.h>
+  #include <Ethernet.h>
+#endif
 
 #include <RosNodeBase.h>
 #include <ros.h>
@@ -15,7 +23,7 @@
 
 #include <RosConfigBase.h>
 
-#define ROS_CONTROLLER_DEBUG 1
+//#define ROS_CONTROLLER_DEBUG 1
 
 typedef  RosNodeBase * RosNodeBasePtr;
 
@@ -24,8 +32,8 @@ class RosController {
   	public:
 
             RosController();
-
-            RosController(IPAddress * server, uint16_t server_port); //TODO RECOVER THIS
+            
+            RosController(IPAddress * server, uint16_t server_port);
 
             void init();
             void readConfiguration(RosConfigBase * ros_config);
