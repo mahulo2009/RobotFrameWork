@@ -10,18 +10,18 @@ class RobotBase {
 
         RobotBase();
 
-        virtual void move(float velocity_x, float velocity_theta) = 0;
+        virtual void move(double velocity_x, double velocity_theta) = 0;
         virtual void stop() = 0;
-        virtual void update(float dt) = 0;
+        virtual void update(double dt) = 0;
 
 		void addWheel(WheelBase * wheel);	
 		
-        float getX() {return x_;};		
-		float getY() {return y_;};
-		float getTheta() {return theta_;};				
-		float getVx() {return vx_;};
-		float getVy() {return vy_;};
-		float getVtheta() {return vtheta_;};
+        double getX() {return x_;};		
+		double getY() {return y_;};
+		double getTheta() {return theta_;};				
+		double getVx() {return vx_;};
+		double getVy() {return vy_;};
+		double getVtheta() {return vtheta_;};
 
 		WheelBase * getWheel(int index) 
 		{
@@ -30,12 +30,12 @@ class RobotBase {
       
 	protected:
 
-    	float x_;
-		float y_;
- 		float theta_;
-		float vx_;
-		float vy_;
-  		float vtheta_;
+    	double x_;
+		double y_;
+ 		double theta_;
+		double vx_;
+		double vy_;
+  		double vtheta_;
 
 		std::vector<WheelBase * > wheels_;
 

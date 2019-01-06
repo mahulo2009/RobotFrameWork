@@ -1,12 +1,12 @@
 #include "DifferentialWheeledRobot.h"
 
-DifferentialWheeledRobot::DifferentialWheeledRobot(float wheel_separation, float wheel_radious): 
+DifferentialWheeledRobot::DifferentialWheeledRobot(double wheel_separation, double wheel_radious): 
 															wheel_separation_(wheel_separation),wheel_radious_(wheel_radious)
 {
 
 }
 
-void DifferentialWheeledRobot::move(float velocity_x, float velocity_theta)
+void DifferentialWheeledRobot::move(double velocity_x, double velocity_theta)
 {
   double velocity_1  = ( 2 * velocity_x + velocity_theta * wheel_separation_) / ( 2 * wheel_radious_ );
   double velocity_2  = ( 2 * velocity_x - velocity_theta * wheel_separation_) / ( 2 * wheel_radious_ );
@@ -31,7 +31,7 @@ void DifferentialWheeledRobot::stop()
 }
 
 
-void DifferentialWheeledRobot::update(float dt)
+void DifferentialWheeledRobot::update(double dt)
 {
 
   float velocity_1 =  wheels_[0]->getVelocity();

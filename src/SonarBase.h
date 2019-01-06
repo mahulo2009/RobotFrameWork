@@ -11,11 +11,11 @@ class SonarBase {
 
         SonarBase();														    //default constructor.
 
-        virtual void moveTo(float angle) = 0;
+        virtual void moveTo(double angle) = 0;
 
         virtual unsigned int read() = 0;
 
-        virtual float getAngle() = 0;
+        virtual double getAngle() = 0;
         
     protected:
 

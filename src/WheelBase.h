@@ -12,20 +12,20 @@ class WheelBase {
         WheelBase();														    //default constructor.
 
         void attachController(HardwareController * controller);   
-        virtual void move(float velocity) = 0;
+        virtual void move(double velocity) = 0;
         virtual void stop() = 0;
 
-        inline float getTargetVelocity() 
+        inline double getTargetVelocity() 
             {return targetVelocity_;};
-        inline float getVelocity() 
+        inline double getVelocity() 
             {return currentVelocity_;};
-        inline float getDemandedVelocity() 
+        inline double getDemandedVelocity() 
             {return demandedVelocity_;};
 
-        inline float getDistance() 
+        inline double getDistance() 
             {return distance_;};
 
-        inline void setDistance(float distance) 
+        inline void setDistance(double distance) 
             {this->distance_=distance;};
 
         HardwareController * getHardwareController() {
@@ -38,9 +38,9 @@ class WheelBase {
         
     protected:
 
-        float targetVelocity_;      //Target velocity [radians per second] 
-		float currentVelocity_;			//Current velocity [radians per second] 
-        float demandedVelocity_;    //Demanded velocity [radians per second]  
+        double targetVelocity_;      //Target velocity [radians per second] 
+		double currentVelocity_;			//Current velocity [radians per second] 
+        double demandedVelocity_;    //Demanded velocity [radians per second]  
 
         HardwareController * controller_;
 

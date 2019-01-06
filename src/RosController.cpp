@@ -24,13 +24,12 @@ void RosController::init_()
     nh.initNode();
     broadcaster.init(nh);
 
-    while(!nh.connected()) {nh.spinOnce();}
-
     current_time_ = last_time_ = nh.now();   
 }
 
 void RosController::init() 
 {
+
     for(int i=0;i<ros_nodes.size();i++) 
     {
         ros_nodes[i]->init(nh);

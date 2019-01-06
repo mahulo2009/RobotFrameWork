@@ -10,16 +10,16 @@ class DifferentialWheeledRobot : public RobotBase {
 
   	public:
 	  
-	    DifferentialWheeledRobot(float wheel_separation,float wheel_radious);
+	    DifferentialWheeledRobot(double wheel_separation,double wheel_radious);
 
-		virtual void move(float velocity_x, float velocity_theta);
+		virtual void move(double velocity_x, double velocity_theta);
 		virtual void stop();
-        virtual void update(float dt);
+        virtual void update(double dt);
 		
 	protected:
 
-	    float wheel_separation_;
-	    float wheel_radious_;	
+	    double wheel_separation_;
+	    double wheel_radious_;	
 
 };
 #endif

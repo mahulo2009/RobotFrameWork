@@ -10,7 +10,7 @@ class EncoderBase {
 	    EncoderBase();			
 	
         virtual void setupDirection(int direction) = 0;			
-	    virtual float getVelocity(float dt) = 0;				
+	    virtual double getVelocity(double dt) = 0;				
 	
     private:
 
