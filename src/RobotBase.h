@@ -13,6 +13,7 @@ class RobotBase {
         virtual void move(double velocity_x, double velocity_theta) = 0;
         virtual void stop() = 0;
         virtual void update(double dt) = 0;
+		virtual void update_close_loop(double dt) = 0;
 
 		void addWheel(WheelBase * wheel);	
 		
@@ -27,6 +28,12 @@ class RobotBase {
 		{
 			return wheels_[index]; //TODO CHECK THE INDEx
 		}
+
+		std::vector<WheelBase * > getWheels() 
+		{
+			return wheels_;
+		}
+
       
 	protected:
 

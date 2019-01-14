@@ -58,10 +58,10 @@ void DifferentialWheeledRobot::update(double dt)
   Serial.print(vtheta_);
   Serial.print("\n");
 	#endif
-
+  
+  theta_  += vtheta_ * dt;
 	x_      +=  vx_ * cos(theta_) * dt;
 	y_      +=  vx_ * sin(theta_) * dt;
-  theta_  += vtheta_ * dt;
 
 	#ifdef DIFFERENTIAL_WHEELED_ROBOT_DEBUG
 	Serial.print("DifferentialWheeledRobot::update:");
@@ -73,4 +73,12 @@ void DifferentialWheeledRobot::update(double dt)
   Serial.print(theta_);
   Serial.print("\n");
 	#endif
+}
+
+void DifferentialWheeledRobot::update_close_loop(double dt)
+{
+
+  wheels_[0]->update(dt);
+	wheels_[1]->update(dt);
+
 }

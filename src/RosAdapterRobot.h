@@ -32,8 +32,7 @@ class RosAdapterRobot  : public RosNodeBase {
             ros::Subscriber<geometry_msgs::Twist, RosAdapterRobot> cmd_velocity_sub_;            
             ros::Publisher odom_pub_;
             nav_msgs::Odometry odom_nav_msg_;
-            geometry_msgs::TransformStamped odom_trans_;                                                  
-            
+            geometry_msgs::TransformStamped odom_trans_; 
             RobotBase * robot_; 
 };
 #endif

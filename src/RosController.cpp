@@ -63,7 +63,5 @@ void RosController::update()
         last_time_ = current_time_;
         
         nh.spinOnce(); 
-        //Delay
-        delay(100);  
     }    
 }

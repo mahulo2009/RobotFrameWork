@@ -14,6 +14,7 @@ class WheelBase {
         void attachController(HardwareController * controller);   
         virtual void move(double velocity) = 0;
         virtual void stop() = 0;
+        virtual void update(double dt) = 0;
 
         inline double getTargetVelocity() 
             {return targetVelocity_;};
@@ -32,7 +33,7 @@ class WheelBase {
             return controller_;
         }
         
-        virtual void update() = 0;
+        
 
         float distance_;
         

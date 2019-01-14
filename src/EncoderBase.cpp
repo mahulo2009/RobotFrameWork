@@ -1,6 +1,6 @@
 #include "EncoderBase.h"
 
-EncoderBase::EncoderBase() 
+EncoderBase::EncoderBase()
 {
-    
+
 }

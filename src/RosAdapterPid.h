@@ -3,36 +3,38 @@
 
 #include <ros.h>
 
+#include "Pid.h"
 #include "RosNodeBase.h"
 #include "WheelEncoder.h"
-#include <rosserial_arduino/Test.h>
+#include <robomat_project/PidTunning.h>
 
-using rosserial_arduino::Test;
+using namespace robomat_project;
 
 class RosAdapterPid  : public RosNodeBase {
 
   	public:
 
-        RosAdapterPid();
+            RosAdapterPid();
 
-        virtual void init(ros::NodeHandle &nh);
-        virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster);
+            virtual void init(ros::NodeHandle &nh);
+            virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster);
 
-        void attachWheel(WheelBase * wheel);
+            void attachWheel(std::vector<WheelBase * > wheels_);
 
-        void callback(const Test::Request & req, Test::Response & res);
+            void callback(const PidTunning::Request & req, PidTunning::Response & res);
                     
 	protected:
 
   	private:
 
-        geometry_msgs::Vector3 pid_telemetry_wheel_msg_;              
-        WheelBase * wheel_; 
-        ros::Publisher pid_telemetry_wheel_pub_;
+            geometry_msgs::Vector3 pid_telemetry_wheel_msg_;              
+            std::vector<WheelBase * > wheels_;
+            WheelBase * wheel_;
+            ros::Publisher pid_telemetry_wheel_pub_;
+            ros::NodeHandle * nh_;
+            ros::ServiceServer<PidTunning::Request, PidTunning::Response,RosAdapterPid > server;
 
-        ros::ServiceServer<Test::Request, Test::Response,RosAdapterPid > server;
-
-        ros::NodeHandle *nh_;
+            
 
 };
 #endif
