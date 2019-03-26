@@ -33,7 +33,9 @@ class RosController {
 
             RosController();
             
+            #if defined(ESP8266)
             RosController(IPAddress * server, uint16_t server_port);
+            #endif
 
             void init();
             void readConfiguration(RosConfigBase * ros_config);

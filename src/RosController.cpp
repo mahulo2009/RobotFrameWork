@@ -5,15 +5,13 @@ RosController::RosController()
     init_();
 }
 
-
+#if defined(ESP8266)
 RosController::RosController(IPAddress * server, uint16_t server_port)
 {
-    #if defined(ESP8266)
     nh.getHardware()->setConnection(*server, server_port);
-    #endif
-
     init_();
 }
+#endif
 
 void RosController::init_()
 {    
@@ -47,7 +45,7 @@ void RosController::readConfiguration(RosConfigBase * ros_config)
 
 
 void RosController::update()
-{
+{    
     while(!nh.connected()) {nh.spinOnce();}
 
     if (nh.connected()) {
