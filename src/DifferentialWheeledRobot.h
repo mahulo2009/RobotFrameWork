@@ -15,8 +15,7 @@ class DifferentialWheeledRobot : public RobotBase {
 		virtual void move(double velocity_x, double velocity_theta);
 		virtual void stop();
         virtual void update(double dt);
-		virtual void update_close_loop(double dt);
-		
+					
 	protected:
 
 	    double wheel_separation_;

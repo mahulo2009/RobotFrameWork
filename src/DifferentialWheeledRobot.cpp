@@ -34,7 +34,7 @@ void DifferentialWheeledRobot::stop()
 void DifferentialWheeledRobot::update(double dt)
 {
 
-  float velocity_1 =  wheels_[0]->getVelocity();
+  float velocity_1 =  wheels_[0]->getVelocity();  
   float velocity_2 =  wheels_[1]->getVelocity();
 
 	#ifdef DIFFERENTIAL_WHEELED_ROBOT_DEBUG
@@ -73,12 +73,4 @@ void DifferentialWheeledRobot::update(double dt)
   Serial.print(theta_);
   Serial.print("\n");
 	#endif
-}
-
-void DifferentialWheeledRobot::update_close_loop(double dt)
-{
-
-  wheels_[0]->update(dt);
-	wheels_[1]->update(dt);
-
 }

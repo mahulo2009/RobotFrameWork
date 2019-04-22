@@ -13,8 +13,7 @@ class RobotBase {
         virtual void move(double velocity_x, double velocity_theta) = 0;
         virtual void stop() = 0;
         virtual void update(double dt) = 0;
-		virtual void update_close_loop(double dt) = 0;
-
+	
 		void addWheel(WheelBase * wheel);	
 		
         double getX() {return x_;};		
