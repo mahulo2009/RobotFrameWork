@@ -4,6 +4,8 @@
 #include <WheelBase.h>
 #include <vector>
 
+#define COMMAND_TIMEOUT 500
+
 class RobotBase {
 
   	public:
@@ -36,6 +38,7 @@ class RobotBase {
       
 	protected:
 
+		unsigned long previous_command_time_;
     	double x_;
 		double y_;
  		double theta_;
@@ -44,6 +47,10 @@ class RobotBase {
   		double vtheta_;
 
 		std::vector<WheelBase * > wheels_;
+
+		double target_velocity_x_;
+		double target_velocity_theta_;
+
 
   	private:
 

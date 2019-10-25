@@ -5,6 +5,7 @@
 
 typedef enum { FORWARD, BACKWARD} Wheel_Direction;
 
+//TODO RENAME THIS MotorDrive
 class HardwareController {
 
     public:
