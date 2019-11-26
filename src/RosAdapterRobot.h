@@ -16,15 +16,14 @@ class RosAdapterRobot  : public RosNodeBase {
 
   	public:
 
-            RosAdapterRobot();
+            RosAdapterRobot(bool sendTF);
 
             virtual void init(ros::NodeHandle &nh);
             virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster);
             
             void cmd_velocity_callback(const geometry_msgs::Twist& CVel);
             void attachRobot(RobotBase * robot);
-            
-                    
+                                
 	protected:
 
   	private:
@@ -34,5 +33,6 @@ class RosAdapterRobot  : public RosNodeBase {
             nav_msgs::Odometry odom_nav_msg_;
             geometry_msgs::TransformStamped odom_trans_; 
             RobotBase * robot_; 
+            bool sendTF_;
 };
 #endif

@@ -27,7 +27,11 @@ class RobotBase {
 
 		WheelBase * getWheel(int index) 
 		{
-			return wheels_[index]; //TODO CHECK THE INDEx
+			if ( index < 1 || index > wheels_.size() )
+			{
+				return 0L;
+			}
+			return wheels_[index]; 
 		}
 
 		std::vector<WheelBase * > getWheels() 

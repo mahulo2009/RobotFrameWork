@@ -1,9 +1,12 @@
 #include "RosAdapterRobot.h"
 
-RosAdapterRobot::RosAdapterRobot() : 
-    cmd_velocity_sub_("/car/cmd_vel", &RosAdapterRobot::cmd_velocity_callback,this),
+RosAdapterRobot::RosAdapterRobot(bool sendTF) : 
+    cmd_velocity_sub_("/car/cmd_vel", 
+                        &RosAdapterRobot::cmd_velocity_callback,
+                        this),
     odom_pub_("/car/odom", &odom_nav_msg_),
-    robot_(0)  
+    robot_(0) ,
+    sendTF_(sendTF) 
 {   
 }
 
@@ -31,14 +34,17 @@ void RosAdapterRobot::update(ros::Time &current_time,tf::TransformBroadcaster &b
     if ( robot_ != 0 ) 
     {
         //BEGIN TF
-        odom_trans_.header.stamp = current_time;
-        odom_trans_.header.frame_id = "odom";
-        odom_trans_.child_frame_id = "base_link";
-        odom_trans_.transform.translation.x = robot_->getX();
-        odom_trans_.transform.translation.y = robot_->getY();
-        odom_trans_.transform.translation.z = 0.0;
-        odom_trans_.transform.rotation = tf::createQuaternionFromYaw(robot_->getTheta()); 
-        //broadcaster.sendTransform(odom_trans_);
+        if (sendTF_) 
+        {
+            odom_trans_.header.stamp = current_time;
+            odom_trans_.header.frame_id = "odom";
+            odom_trans_.child_frame_id = "base_link";
+            odom_trans_.transform.translation.x = robot_->getX();
+            odom_trans_.transform.translation.y = robot_->getY();
+            odom_trans_.transform.translation.z = 0.0;
+            odom_trans_.transform.rotation = tf::createQuaternionFromYaw(robot_->getTheta()); 
+            broadcaster.sendTransform(odom_trans_);
+        }
         //END TF
 
         //BEGIN ODOMETRY
