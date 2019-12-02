@@ -4,7 +4,7 @@
 #include <WheelBase.h>
 #include <vector>
 
-#define COMMAND_TIMEOUT 500
+#define COMMAND_TIMEOUT 1500
 
 class RobotBase {
 
