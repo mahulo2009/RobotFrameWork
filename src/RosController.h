@@ -41,7 +41,7 @@ class RosController {
             void readConfiguration(RosConfigBase * ros_config);
             void update();
             
-            inline void addNode(RosNodeBasePtr ros_node ) 
+            inline void addNode(RosNodeBasePtr ros_node) 
             {
                   ros_nodes.push_back(ros_node);
             }
@@ -50,9 +50,6 @@ class RosController {
 
             ros::NodeHandle nh;                     
             tf::TransformBroadcaster broadcaster;   
-
-            ros::Time current_time_;
-            ros::Time last_time_;
 
   	private:
 

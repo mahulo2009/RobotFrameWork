@@ -21,8 +21,6 @@ void RosController::init_()
 
     nh.initNode();
     broadcaster.init(nh);
-
-    current_time_ = last_time_ = nh.now();   
 }
 
 void RosController::init() 
@@ -48,18 +46,15 @@ void RosController::update()
 {    
     while(!nh.connected()) {nh.spinOnce();}
 
-    if (nh.connected()) {
+    if (nh.connected()) {        
         
-        current_time_ = nh.now();
-        double dt = current_time_.toSec() - last_time_.toSec();   
+        ros::Time current_time = nh.now();
 
         for(int i=0;i<ros_nodes.size();i++) 
         {
-            ros_nodes[i]->update(current_time_,broadcaster);
+            ros_nodes[i]->update(current_time,broadcaster);
         }
-
-        last_time_ = current_time_;
-        
+                
         nh.spinOnce(); 
     }    
 }
