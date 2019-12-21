@@ -4,42 +4,39 @@
 #include <ros.h>
 
 #include <RosNodeBase.h>
-#include <RobotBase.h>
-#include "robotin_project/PID.h" //TODO
+#include <WheelBase.h>
+#include "robotin_project/PID.h" 
+#include "robotin_project/VEL.h" 
+#include "robotin_project/TEL.h" 
 
 class RosAdapterPid : public RosNodeBase {
 
-  	public:
+        public:
 
-        RosAdapterPid();
-        
-        virtual void init(ros::NodeHandle &nh);
-        virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster);
+                RosAdapterPid(String cmd_vel, String cmp_pid,String tel_vel);
 
-        void pid_callback(const robotin_project::PID& pid);
-        void attachRobot(RobotBase * robot);
-                    
-	protected:
+                virtual void init(ros::NodeHandle &nh);
+                virtual void update(ros::Time &current_time);
 
-  	private:
+                void pid_callback(const robotin_project::PID& pid);
+                void vel_callback(const robotin_project::VEL& vel);
+                void attachWheel(WheelBase * wheel);
+                        
+        protected:
 
-        ros::Subscriber<robotin_project::PID, RosAdapterPid> pid_sub_;
-        robotin_project::PID pid_msg_;            
+        private:
 
-        /*               
-        geometry_msgs::TransformStamped pid_trans_;                                       
-        ros::Publisher pid_pub_;
-        */
+                ros::Subscriber<robotin_project::VEL, RosAdapterPid> cmd_vel_sub_;
+                ros::Subscriber<robotin_project::PID, RosAdapterPid> cmd_pid_sub_;
+                ros::Publisher tel_pub_;
 
-        RobotBase * robot_; 
+                robotin_project::TEL tel_msg_;            
+                WheelBase * wheel_; 
+                String cmd_vel_;
+                String cmd_pid_;
+                String tel_vel_;
+                
+                
+            
 };
 #endif
-/*
-
-            ros::Subscriber<geometry_msgs::Twist, RosAdapterRobot> cmd_velocity_sub_;            
-            ros::Publisher odom_pub_;
-            nav_msgs::Odometry odom_nav_msg_;
-            geometry_msgs::TransformStamped odom_trans_; 
-            RobotBase * robot_; 
-            bool sendTF_;
-*/

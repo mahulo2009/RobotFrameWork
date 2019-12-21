@@ -5,7 +5,7 @@
 
 #include <RosNodeBase.h>
 #include <ImuBase.h>
-#include "gara_project/Imu.h" //TODO
+#include <lino_msgs/Imu.h>
 
 class RosAdapterImu : public RosNodeBase {
 
@@ -14,7 +14,7 @@ class RosAdapterImu : public RosNodeBase {
             RosAdapterImu();
             
             virtual void init(ros::NodeHandle &nh);
-            virtual void update(ros::Time &current_time,tf::TransformBroadcaster &broadcaster);
+            virtual void update(ros::Time &current_time);
 
             void attachImu(ImuBase * imu) {
                 this->imu_ = imu;
@@ -26,7 +26,7 @@ class RosAdapterImu : public RosNodeBase {
             
             geometry_msgs::TransformStamped imu_trans_;                                       
             ros::Publisher imu_pub_;
-            gara_project::Imu imu_msg_;            
+            lino_msgs::Imu imu_msg_;            
 
             ImuBase * imu_;
 };

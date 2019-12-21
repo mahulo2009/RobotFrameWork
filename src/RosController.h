@@ -49,7 +49,6 @@ class RosController {
 	protected:
 
             ros::NodeHandle nh;                     
-            tf::TransformBroadcaster broadcaster;   
 
   	private:
 

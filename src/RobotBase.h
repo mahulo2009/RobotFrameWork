@@ -25,7 +25,7 @@ class RobotBase {
 		double getVy() {return vy_;};
 		double getVtheta() {return vtheta_;};
 
-		WheelBase * getWheel(int index) 
+		WheelBase * getWheel(unsigned int index) 
 		{
 			if ( index < 1 || index > wheels_.size() )
 			{

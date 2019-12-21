@@ -20,7 +20,6 @@ void RosController::init_()
     #endif
 
     nh.initNode();
-    broadcaster.init(nh);
 }
 
 void RosController::init() 
@@ -44,7 +43,7 @@ void RosController::readConfiguration(RosConfigBase * ros_config)
 
 void RosController::update()
 {    
-    while(!nh.connected()) {nh.spinOnce();}
+    //while(!nh.connected()) {nh.spinOnce();}
 
     if (nh.connected()) {        
         
@@ -52,9 +51,9 @@ void RosController::update()
 
         for(int i=0;i<ros_nodes.size();i++) 
         {
-            ros_nodes[i]->update(current_time,broadcaster);
+            ros_nodes[i]->update(current_time);
         }
-                
-        nh.spinOnce(); 
-    }    
+    }   
+
+    nh.spinOnce(); 
 }
