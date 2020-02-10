@@ -15,6 +15,7 @@ class HardwareController {
         virtual void    velocity(double velocity) = 0;
         virtual double  getVelocity() = 0;
         virtual void    update() = 0;
+        virtual int     duty() = 0;
         
     protected:
 

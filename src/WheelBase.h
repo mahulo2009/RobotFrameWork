@@ -22,6 +22,8 @@ class WheelBase {
             {return currentVelocity_;};
         inline double getDemandedVelocity() 
             {return demandedVelocity_;};
+        inline HardwareController * getHardwareController()
+            {return controller_;};
         
     protected:
 
